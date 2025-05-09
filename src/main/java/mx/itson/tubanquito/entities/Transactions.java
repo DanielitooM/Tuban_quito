@@ -4,10 +4,18 @@
  */
 package mx.itson.tubanquito.entities;
 
+import java.util.Date;
+import mx.itson.tubanquito.enums.TypeTransaction;
+
 /**
  *
- * @author rosagabriela
+ * @author DanielMorales
  */
 public class Transactions {
     
+    private Date day;
+    private String description;
+    private String reference;
+    private int amount;
+    private TypeTransaction type;
 }

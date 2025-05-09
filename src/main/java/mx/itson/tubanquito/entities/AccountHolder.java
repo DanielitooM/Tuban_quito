@@ -8,16 +8,17 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  *
- * @author rosagabriela
+ * @author DanielMorales
  */
 public class AccountHolder {
-    public String name;
-    public String adress;
-    public String city;
+
+    private int code;
+    private String name;
+    private String address;
+    private String city;
     @SerializedName("taxpayer-id")
-    public String taxPayed;
+    private String taxpayerId;
     @SerializedName("zip-code")
-    public int zipCode;
-    //555
+    private int zipCode;   
     
 }
