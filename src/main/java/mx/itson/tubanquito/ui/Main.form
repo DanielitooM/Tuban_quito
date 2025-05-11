@@ -38,8 +38,8 @@
                               <Component id="pnlState3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblClientCode2" min="-2" pref="37" max="-2" attributes="0"/>
                                   <Component id="lblId2" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="lblClientCode2" min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
@@ -95,14 +95,13 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="pnlTittle3" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="pnlState3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="lblClientCode2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="lblId2" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="pnlState3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="pnlTittle4" min="-2" max="-2" attributes="0"/>
@@ -427,12 +426,11 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblClientCode1" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblId1" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
+                      <Component id="lblId1" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="19" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -468,7 +466,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="RFC"/>
+            <Property name="text" type="java.lang.String" value="Taxpayer-ID"/>
           </Properties>
         </Component>
       </SubComponents>

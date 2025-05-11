@@ -4,6 +4,14 @@
  */
 package mx.itson.tubanquito.ui;
 
+import java.awt.FileDialog;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import mx.itson.tubanquito.entities.Account;
+import mx.itson.tubanquito.entities.AccountHolder;
+
 /**
  *
  * @author rosagabriela
@@ -216,18 +224,17 @@ public class Main extends javax.swing.JFrame {
 
         lblId1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         lblId1.setForeground(new java.awt.Color(255, 255, 255));
-        lblId1.setText("RFC");
+        lblId1.setText("Taxpayer-ID");
 
         javax.swing.GroupLayout pnlState3Layout = new javax.swing.GroupLayout(pnlState3);
         pnlState3.setLayout(pnlState3Layout);
         pnlState3Layout.setHorizontalGroup(
             pnlState3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlState3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlState3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblClientCode1)
-                    .addComponent(lblId1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(lblId1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         pnlState3Layout.setVerticalGroup(
             pnlState3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,8 +342,8 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(pnlState3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblClientCode2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblId2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(lblId2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblClientCode2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(pnlState4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -378,13 +385,12 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlTittle3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlState3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
                         .addComponent(lblClientCode2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblId2)))
+                        .addGap(12, 12, 12)
+                        .addComponent(lblId2))
+                    .addComponent(pnlState3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlTittle4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -408,7 +414,38 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
-        // TODO add your handling code here:
+        FileDialog fileDialog = new FileDialog(this, "Seleccionar Archivo", FileDialog.LOAD);
+                fileDialog.setVisible(true);
+
+                String directory = fileDialog.getDirectory();
+                String filename = fileDialog.getFile();
+
+                if (filename != null) {
+                    File selectedFile = new File(directory, filename);
+                    try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
+                        StringBuilder content = new StringBuilder();
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            content.append(line).append("\n");
+                        }
+                        String contenido = content.toString();
+                        
+                        Account a = Account.deserialize(contenido);
+                        AccountHolder a2 = new AccountHolder();
+                        lblName2.setText(a2.getName());
+                        lblAccountNumber2.setText(String.valueOf(a.getAccountHolder()));
+                        lblCurrency2.setText(a.getCurrency());
+                        lblClientCode2.setText(String.valueOf(a2.getCode()));
+                        lblId2.setText(a2.getTaxpayerId());
+                        lblAddress2.setText(a2.getAddress());
+                        lblCity2.setText(a2.getCity());
+                        lblZipCode2.setText(String.valueOf(a2.getZipCode()));
+                        
+                        
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
     }//GEN-LAST:event_btnFileActionPerformed
 
     /**
