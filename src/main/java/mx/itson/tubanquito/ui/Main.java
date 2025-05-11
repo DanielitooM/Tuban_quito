@@ -61,7 +61,7 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnlTittle.setBackground(new java.awt.Color(51, 102, 255));
+        pnlTittle.setBackground(new java.awt.Color(0, 51, 255));
         pnlTittle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         lblTitle.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -102,7 +102,7 @@ public class Main extends javax.swing.JFrame {
         tblDate.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane2.setViewportView(tblDate);
 
-        btnFile.setBackground(new java.awt.Color(51, 102, 255));
+        btnFile.setBackground(new java.awt.Color(0, 51, 255));
         btnFile.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         btnFile.setForeground(new java.awt.Color(255, 255, 255));
         btnFile.setText("Select file");
@@ -163,7 +163,7 @@ public class Main extends javax.swing.JFrame {
         lblAccountNumber2.setForeground(new java.awt.Color(255, 255, 255));
         lblAccountNumber2.setText("...");
 
-        pnlTittle2.setBackground(new java.awt.Color(51, 102, 255));
+        pnlTittle2.setBackground(new java.awt.Color(0, 51, 255));
 
         lblTittle2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         lblTittle2.setForeground(new java.awt.Color(255, 255, 255));
@@ -175,8 +175,8 @@ public class Main extends javax.swing.JFrame {
             pnlTittle2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTittle2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTittle2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(lblTittle2)
+                .addGap(20, 20, 20))
         );
         pnlTittle2Layout.setVerticalGroup(
             pnlTittle2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,7 +187,7 @@ public class Main extends javax.swing.JFrame {
         lblCurrency2.setForeground(new java.awt.Color(255, 255, 255));
         lblCurrency2.setText("...");
 
-        pnlTittle3.setBackground(new java.awt.Color(51, 102, 255));
+        pnlTittle3.setBackground(new java.awt.Color(0, 51, 255));
         pnlTittle3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         lblTitle3.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -285,7 +285,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlTittle4.setBackground(new java.awt.Color(51, 102, 255));
+        pnlTittle4.setBackground(new java.awt.Color(0, 51, 255));
 
         lblTitle4.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         lblTitle4.setForeground(new java.awt.Color(255, 255, 255));
