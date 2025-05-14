@@ -103,7 +103,7 @@ public class Main extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Date", "Description", "Reference", "cargo", "abono", "balance"
+                "Date", "Description", "Reference", "Credit", "Debit", "balance"
             }
         ));
         tblDate.setToolTipText("");
