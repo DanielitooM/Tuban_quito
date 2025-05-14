@@ -14,19 +14,19 @@ import mx.itson.tubanquito.enums.TypeTransaction;
 public class Transactions {
 
     /**
-     * @return the day
+     * @return the date
      */
-    public Date getDay() {
-        return day;
+    public Date getDate() {
+        return date;
     }
 
     /**
-     * @param day the day to set
+     * @param date the date to set
      */
-    public void setDay(Date day) {
-        this.day = day;
+    public void setDate(Date date) {
+        this.date = date;
     }
-
+    
     /**
      * @return the description
      */
@@ -58,14 +58,14 @@ public class Transactions {
     /**
      * @return the amount
      */
-    public int getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
     /**
      * @param amount the amount to set
      */
-    public void setAmount(int amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
@@ -83,9 +83,9 @@ public class Transactions {
         this.type = type;
     }
     
-    private Date day;
+    private Date date;
     private String description;
     private String reference;
-    private int amount;
+    private Double amount;
     private TypeTransaction type;
 }

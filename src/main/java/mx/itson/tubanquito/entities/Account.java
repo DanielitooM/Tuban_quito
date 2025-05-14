@@ -34,14 +34,14 @@ public class Account {
     /**
      * @return the accountNumber
      */
-    public int getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
 
     /**
      * @param accountNumber the accountNumber to set
      */
-    public void setAccountNumber(int accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 
@@ -89,7 +89,7 @@ public class Account {
     
     private String product;
     @SerializedName("account-number")
-    private int accountNumber;
+    private String accountNumber;
     private String currency;
     @SerializedName("account-holder")
     private AccountHolder accountHolder;
@@ -100,10 +100,9 @@ public class Account {
         try {
             Gson gson = new Gson();
             a = gson.fromJson(json, Account.class);
-        } catch (Exception ex) {
+        }catch (Exception ex) {
             System.err.println("Error: " + ex.getMessage());
-        }
-       return a; 
+        }return a; 
     }
     
 }
