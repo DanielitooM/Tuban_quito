@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import mx.itson.tubanquito.entities.Account;
 import mx.itson.tubanquito.entities.Transactions;
@@ -447,6 +449,17 @@ public class Main extends javax.swing.JFrame {
                         model.setRowCount(0);
                         
                         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                        /*Declaramos una lista llamada 'Lista' que contiene toda las transacciones
+                        que se obtuvieron desde el objeto 'Account' 
+                        */
+                        
+                        List<Transactions> lista = a.getTransactions();
+                         
+                        /*Se ordenan las transacciones por fecha de la mas antigua a la mas reciente
+                        usando el metodo sort. El metodo recibe un Comparator que compara el campo 'date'.
+                        */
+                        lista.sort(Comparator.comparing(Transactions::getDate));
+                        
                         for(Transactions t : a.getTransactions()){
                             model.addRow(new Object[] {
                             dateFormat.format(t.getDate()),
