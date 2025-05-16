@@ -15,6 +15,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import mx.itson.tubanquito.entities.Account;
 import mx.itson.tubanquito.entities.Transactions;
+import mx.itson.tubanquito.enums.TypeTransaction;
 
 /**
  *
@@ -449,25 +450,46 @@ public class Main extends javax.swing.JFrame {
                         model.setRowCount(0);
                         
                         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                        
                         /*Declaramos una lista llamada 'Lista' que contiene toda las transacciones
                         que se obtuvieron desde el objeto 'Account' 
                         */
-                        
                         List<Transactions> lista = a.getTransactions();
                          
                         /*Se ordenan las transacciones por fecha de la mas antigua a la mas reciente
                         usando el metodo sort. El metodo recibe un Comparator que compara el campo 'date'.
                         */
                         lista.sort(Comparator.comparing(Transactions::getDate));
-                        
+                        double balance=0;
+                        /* 
+                        A for loop was created to iterate through the list of "Transactions" contained in the objetc a,
+                        which is an instance of the "Account" class.
+                        Inside the looop two variables were declared "credit" and "debit". These are used to display
+                        the transaction amount in the correct column depending on the transaction type.
+                        */
                         for(Transactions t : a.getTransactions()){
+                            String credit ="";
+                            String debit="";
+                            if(t.getType()== TypeTransaction.CREDIT){
+                              credit= String.valueOf(t.getAmount());
+                              balance -= t.getAmount();
+                              /*
+                              An "if else" is used to evaluate the type of eache transaction.
+                              */
+                              } else if (t.getType()==TypeTransaction.DEBIT){
+                               debit= String.valueOf(t.getAmount());
+                               balance += t.getAmount();
+                              }
                             model.addRow(new Object[] {
                             dateFormat.format(t.getDate()),
                             t.getDescription(),
                             t.getReference(),
+                            credit,
+                            debit,
+                            String.format("%.2f", balance)
+
                             
                             
-                            t.getAmount()
                             });
                         
                         }
