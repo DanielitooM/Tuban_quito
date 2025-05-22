@@ -5,7 +5,12 @@
 package mx.itson.tubanquito.entities;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.annotations.SerializedName;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -98,25 +103,32 @@ public class Account {
     private AccountHolder accountHolder;
     private List <Transactions> transactions;
     
-    /**
-     * 
-     * @param json
-     * @return deserealized object of type Account
-     */
-    /*1.this method deserializes a json string into an object of type Account
-    2.it uses the Gson library to do so 
-    3.it takes a json string as input and returns an object of type Account
-    4.it uses a try-catch block to handle any exceptions that may occur during the deserialization process
-    5.if an exception occurs, it prints the error message to the console
-    */
-    public  static Account deserialize(String json) {
-        Account a = new Account ();
+    public static Account deserialize(String json) {
+        Account account = null;
         try {
             Gson gson = new Gson();
-            a = gson.fromJson(json, Account.class);
-        }catch (Exception ex) {
-            System.err.println("Error: " + ex.getMessage());
-        }return a; 
+            account = gson.fromJson(json, Account.class);
+        } catch (Exception ex) {
+            System.err.println("Error deserializing Account with default Gson: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+        return account;
+    }
+
+    public double calculateBalanceWithDailyInterestForPeriod(double currentBalance, double dailyInterestRate, int numberOfDays) {
+        if (currentBalance <= 0 || numberOfDays <= 0) { // Do not calculate interest if there is no balance or days
+            return currentBalance;
+        }
+        // For daily interest:
+        double totalInterest = 0;
+        double balanceForDay = currentBalance;
+        for (int i = 0; i < numberOfDays; i++) {
+            double interestForOneDay = balanceForDay * dailyInterestRate;
+            totalInterest += interestForOneDay;
+            balanceForDay += interestForOneDay;
+        // The interest is "capitalized" for the next day
+        }
+        return currentBalance + totalInterest;
     }
     
-}
+    }
