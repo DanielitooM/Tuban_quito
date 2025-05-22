@@ -111,19 +111,15 @@ public class Account {
     }
 
     public double calculateBalanceWithDailyInterest(double currentBalance, double dailyInterestRate, int numberOfDays) {
-        if (currentBalance <= 0 || numberOfDays <= 0) { // Do not calculate interest if there is no balance or days
-            return currentBalance;
+        if (currentBalance <= 0 || numberOfDays <= 0) {
+            return currentBalance; // No calcular interés si no hay balance o días
         }
-        // For daily interest:
-        double totalInterest = 0;
-        double balanceForDay = currentBalance;
-        for (int i = 0; i < numberOfDays; i++) {
-            double interestForOneDay = balanceForDay * dailyInterestRate;
-            totalInterest += interestForOneDay;
-            balanceForDay += interestForOneDay;
-        // The interest is "capitalized" for the next day
-        }
-        return currentBalance + totalInterest;
+
+        // Interés = Balance * Tasa diaria * Número de días
+        double interestForPeriod = currentBalance * dailyInterestRate * numberOfDays;
+        
+        return currentBalance + interestForPeriod;
+        
     }
     
     }
