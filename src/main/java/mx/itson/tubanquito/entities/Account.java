@@ -115,7 +115,7 @@ public class Account {
         return account;
     }
 
-    public double calculateBalanceWithDailyInterestForPeriod(double currentBalance, double dailyInterestRate, int numberOfDays) {
+    public double calculateBalanceWithDailyInterest(double currentBalance, double dailyInterestRate, int numberOfDays) {
         if (currentBalance <= 0 || numberOfDays <= 0) { // Do not calculate interest if there is no balance or days
             return currentBalance;
         }

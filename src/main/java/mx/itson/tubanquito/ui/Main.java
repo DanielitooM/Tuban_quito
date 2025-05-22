@@ -687,9 +687,9 @@ public class Main extends javax.swing.JFrame {
             lblTotal2.setText("0.00"); //Ready for calculation with the button
 
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + ex.getMessage(), "Error de Archivo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error reading file: " + ex.getMessage(), "File Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Ocurrió un error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 }
 
@@ -698,7 +698,7 @@ public class Main extends javax.swing.JFrame {
     private void btnCalculateDRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateDRActionPerformed
        
             if (this.currentAccount == null || this.currentAccount.getTransactions() == null || this.currentAccount.getTransactions().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Cargue un archivo con transacciones primero.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Upload a file with transactions first.", "Warning", JOptionPane.WARNING_MESSAGE);
         return;
     }
 
@@ -706,18 +706,18 @@ public class Main extends javax.swing.JFrame {
     try {
         String inputText = txtDailyRate.getText().trim();
         if (inputText.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese una tasa de interés diaria (ej. 0.01 para 0.01%).", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Enter a daily interest rate (Example. 0.01 for 0.01%).", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         // We assume the user enters a daily percentage. We convert it to a decimal
         dailyRateFromInput = Double.parseDouble(inputText) / 100.0; 
 
         if (dailyRateFromInput < 0) {
-            JOptionPane.showMessageDialog(this, "La tasa no puede ser negativa.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "The rate cannot be negative.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
     } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Tasa inválida.", "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Invalid rate.", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
@@ -744,7 +744,7 @@ public class Main extends javax.swing.JFrame {
                 double interestForPeriod = 0;
                 
                 double balanceBeforeInterest = currentEffectiveBalance;
-                currentEffectiveBalance = this.currentAccount.calculateBalanceWithDailyInterestForPeriod(balanceBeforeInterest, dailyRateFromInput, daysBetween);
+                currentEffectiveBalance = this.currentAccount.calculateBalanceWithDailyInterest(balanceBeforeInterest, dailyRateFromInput, daysBetween);
                 interestForPeriod = currentEffectiveBalance - balanceBeforeInterest;
                 
                 totalInterestEarned += interestForPeriod;
@@ -772,7 +772,7 @@ public class Main extends javax.swing.JFrame {
          }
      }
 
-    lblTotal2.setText(String.format("Interés Acum.: %.2f | Saldo Final: %.2f", totalInterestEarned, currentEffectiveBalance));
+    lblTotal2.setText(String.format("Accrued interest.: %.2f | Final Balance: %.2f", totalInterestEarned, currentEffectiveBalance));
 
     }//GEN-LAST:event_btnCalculateDRActionPerformed
 

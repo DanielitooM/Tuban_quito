@@ -96,12 +96,5 @@ public class Transactions {
     private Double amount;
     private TypeTransaction type;
     
-    //constructor created to initialize the attributes of the class
-    public static double calculateDailyRate(double amount, double dailyRate){
-       /*dailyRate is a double used to calculate the interest you will earn at the end of the day
-       amount is the amount of money you have in your account
-       */ 
-       double daiilyRate = amount * dailyRate;
-        return daiilyRate;
     }
-}
+
