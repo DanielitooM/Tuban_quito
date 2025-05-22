@@ -683,9 +683,9 @@ public class Main extends javax.swing.JFrame {
 
     double dailyRateFromInput;
     
-        String inputText = txtDailyRate.getText().trim();
-        // The percentage entered is converted to decimal
-        dailyRateFromInput = Double.parseDouble(inputText) / 100.0;
+    String inputText = txtDailyRate.getText().trim();
+     // The percentage entered is converted to decimal
+    dailyRateFromInput = Double.parseDouble(inputText) / 100.0;
 
     List<Transactions> transactions = new ArrayList<>(this.currentAccount.getTransactions());
     // Check if the transactions are sorted by date
